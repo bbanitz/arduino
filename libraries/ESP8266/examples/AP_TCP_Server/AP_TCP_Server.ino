@@ -4,8 +4,9 @@
 #include "esp8266.h"
 #include "SoftwareSerial.h"
 
-#define	ssid		"esp8266"
-#define	password	"12345678"
+#define ssid    "AndroidAP"   // you need to change it 
+#define password  "bimk6138"
+
 #define	serverPort	8081		// esp8266 will open it's 8081 port , and other can connect 
 
 Esp8266 wifi;
