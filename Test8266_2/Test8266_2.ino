@@ -33,11 +33,23 @@ void loop()
     
     if(Serial.find("+IPD,"))
     {
-     delay(1000);
+     //delay(1000);
  
      int connectionId = Serial.read()-48; // subtract 48 because the read() function returns 
                                            // the ASCII decimal value and 0 (the first decimal number) starts at 48
-     
+    String response = "";
+    long int time = millis();
+    while( (time+1000) > millis())
+    {
+      while(Serial.available())
+      {
+        
+        // The esp has data so display its output to the serial window 
+        char c = Serial.read(); // read the next character.
+        response+=c;
+      }  
+    }
+     printLog.println("recu :"+response);
      String webpage = "<h1>Hello</h1><h2>World!</h2><button>LED1</button>";
  
      String cipSend = "AT+CIPSEND=";
