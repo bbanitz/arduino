@@ -111,6 +111,7 @@ bool Esp8266::setMode(char mode) {
 	write("AT+CWMODE="+String(mode));
 	delay(200);
 	String str = readData();
+	debugPrintln("setMode:"+str);
 	if (str.indexOf("no change") > 0)
 		return true;
 	else {
@@ -381,6 +382,7 @@ bool Esp8266::enableAP(String ssid, String password) {
 		write("AT+CWSAP=\""+ssid+"\",\""+password+"\","+String(10)+String(4));
 		String tmp;
 		tmp = readData();
+		debugPrintln("enableAP:"+tmp);
 		if (tmp.indexOf("OK")>0) {
 			return true;
 		} else {
